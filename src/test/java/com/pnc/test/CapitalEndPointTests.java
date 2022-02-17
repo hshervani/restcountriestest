@@ -25,7 +25,7 @@ public class CapitalEndPointTests extends BaseTest {
         RestAssured.basePath =getPropValue("restcountries.capital.path");
     }
 
-    @org.testng.annotations.Test(dataProvider = "statusCodes", dataProviderClass = TestDataSet.class)
+    @Test(dataProvider = "statusCodes", dataProviderClass = TestDataSet.class)
     public void statusCodesTest(String city, String statusCode) {
 //        RestAssured.basePath =getPropValue("restcountries.capital.path");
         given().when().get("/" + city).then().statusCode(Integer.parseInt(statusCode));
@@ -33,13 +33,13 @@ public class CapitalEndPointTests extends BaseTest {
     }
 
 
-    @org.testng.annotations.Test(dataProvider = "validCapitals", dataProviderClass = TestDataSet.class)
+    @Test(dataProvider = "validCapitals", dataProviderClass = TestDataSet.class)
     public void apiEndPointValidCapitolTest(String capitalName) {
         given().when().get("/" + capitalName).then().statusCode(200);
 
     }
 
-    @org.testng.annotations.Test(dataProvider = "invalidCapitals", dataProviderClass = TestDataSet.class)
+    @Test(dataProvider = "invalidCapitals", dataProviderClass = TestDataSet.class)
     public void apiEndPointInValidCapitolTest(String capitalName) {
         given().when().get("/" + capitalName).then().statusCode(404);
 
